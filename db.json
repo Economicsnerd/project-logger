@@ -3,7 +3,7 @@
     {
       "message": "Deploy project 1 to Heroku",
       "attention": false,
-      "tech": "Sam Jackson",
+      "dev": "Sam Jackson",
       "date": "01-12-2020",
       "id": 1
     },
@@ -11,13 +11,13 @@
       "id": 2,
       "message": "Work on CSS Grid for project 2",
       "attention": false,
-      "tech": "Leonardo DaVinci",
+      "dev": "Leonardo DaVinci",
       "date": "01-12-2020"
     },
     {
       "message": "Create a production build for project 3",
       "attention": true,
-      "tech": "Wilson TheBeachBall",
+      "dev": "Wilson TheBeachBall",
       "date": "01-12-2020",
       "id": 3
     },
@@ -25,7 +25,7 @@
       "id": 4,
       "message": "Learn GatsbyJS",
       "attention": false,
-      "tech": "Sonny TheFrenchie",
+      "dev": "Sonny TheFrenchie",
       "date": "01-12-2020"
     }
   ],
