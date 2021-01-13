@@ -12,6 +12,9 @@ const AddLogModal = () => {
     } else {
       console.log("done");
     }
+    setMessage("");
+    setDev("");
+    setAttention(false);
   };
 
   return (
