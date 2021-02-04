@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import DevItem from "./DevItem";
 
 const DevListModal = () => {
   const [team, setTeam] = useState([]);
@@ -23,10 +24,7 @@ const DevListModal = () => {
       <div className="modal-content">
         <h4>Developer List</h4>
         <ul className="collection">
-          {!loading &&
-            team.map((dev) => (
-              <li className="collection-item">{dev.firstName}</li>
-            ))}
+          {!loading && team.map((dev) => <DevItem dev={dev} key={dev.id} />)}
         </ul>
       </div>
     </div>
