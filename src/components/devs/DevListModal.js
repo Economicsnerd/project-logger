@@ -1,34 +1,36 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import DevItem from "./DevItem";
+import { getDev } from "../../actions/devActions";
 
-const DevListModal = () => {
-  const [team, setTeam] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+const DevListModal = ({ getDev, dev: { devs, loading } }) => {
   useEffect(() => {
-    getTeam();
+    getDev();
     // eslint-disable-next-line
   }, []);
 
-  const getTeam = async () => {
-    setLoading(true);
-
-    const res = await fetch("/team");
-    const data = await res.json();
-
-    setTeam(data);
-    setLoading(false);
-  };
   return (
     <div id="dev-list-modal" className="modal">
       <div className="modal-content">
         <h4>Developer List</h4>
         <ul className="collection">
-          {!loading && team.map((dev) => <DevItem dev={dev} key={dev.id} />)}
+          {!loading &&
+            devs !== null &&
+            devs.map((dev) => <DevItem dev={dev} key={dev.id} />)}
         </ul>
       </div>
     </div>
   );
 };
 
-export default DevListModal;
+DevListModal.propTypes = {
+  dev: PropTypes.object.isRequired,
+  getDev: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  dev: state.dev,
+});
+
+export default connect(mapStateToProps, { getDev })(DevListModal);
