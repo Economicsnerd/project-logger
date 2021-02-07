@@ -16,6 +16,7 @@ const AddDevModal = ({ addDev }) => {
         firstName,
         lastName,
       });
+      M.toast({ html: `${firstName} ${lastName} was added to the team` });
     }
     setFirstName("");
     setLastName("");
