@@ -4,6 +4,7 @@ import {
   DELETE_LOG,
   SET_LOADING,
   DEV_ERROR,
+  DELETE_DEV,
 } from "../actions/types";
 
 const initialState = {
@@ -24,6 +25,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         devs: [...state.devs, action.payload],
+        loading: false,
+      };
+    case DELETE_DEV:
+      return {
+        ...state,
+        devs: state.devs.filter((dev) => dev.id !== action.payload),
         loading: false,
       };
     case SET_LOADING:
