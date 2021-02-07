@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import M from "materialize-css/dist/js/materialize";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { addDev } from "../../actions/devActions";
 
-const AddDevModal = () => {
+const AddDevModal = ({ addDev }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -9,7 +12,10 @@ const AddDevModal = () => {
     if (firstName === "" || lastName === "") {
       M.toast({ html: "Please enter the full name of your developer" });
     } else {
-      console.log("THanks!");
+      addDev({
+        firstName,
+        lastName,
+      });
     }
     setFirstName("");
     setLastName("");
@@ -18,13 +24,13 @@ const AddDevModal = () => {
   return (
     <div id="add-dev-modal" className="modal">
       <div className="modal-content">
-        <h4>New Developer</h4>
+        <h4>New Dev</h4>
         <div className="row">
           <div className="input-field">
             <input
               type="text"
               name="firstName"
-              value={lastName}
+              value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
             <label htmlFor="firstName" className="active">
@@ -32,6 +38,7 @@ const AddDevModal = () => {
             </label>
           </div>
         </div>
+
         <div className="row">
           <div className="input-field">
             <input
@@ -45,18 +52,22 @@ const AddDevModal = () => {
             </label>
           </div>
         </div>
-        <div className="modal-footer">
-          <a
-            href="#!"
-            onClick={onSubmit}
-            className="modal-close waves-effect blue waves-light btn"
-          >
-            Add Log
-          </a>
-        </div>
+      </div>
+      <div className="modal-footer">
+        <a
+          href="#!"
+          onClick={onSubmit}
+          className="modal-close waves-effect blue waves-light btn"
+        >
+          Enter
+        </a>
       </div>
     </div>
   );
 };
 
-export default AddDevModal;
+AddDevModal.propTypes = {
+  addDev: PropTypes.func.isRequired,
+};
+
+export default connect(null, { addDev })(AddDevModal);
